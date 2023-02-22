@@ -1,0 +1,11 @@
+<div class = "border-bottom" style = "margin-top: 24px; margin-bottom: 15px">
+    <h4 > {{job['title']}}</h4>
+    <div style = "color: rgb(120 120 120); "><b>Location: </b>{{job['location']}}  </div>
+    <div style = "color: rgb(120 120 120); "><b>from </b>{{job['start']}} <b>to </b> {% if "end" in job%} {{job['end']}}{%else%} today {% endif %}  </div>
+    {% if "jobdescription" in job%}
+    <div style = "color: rgb(120 120 120);"><b>description </b>{{job['jobdescription']}}  </div>
+    {% endif %}
+    {% if "company" in job%}
+    <div style = "color: rgb(120 120 120); margin-bottom: 15px; "><b>description </b>{{job['company']}}  </div>
+    {% endif %}
+</div>
