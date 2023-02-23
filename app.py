@@ -31,18 +31,20 @@ jobs = [
     "location": "Milan",
     "start": "01-01-2023"
     }
-    
 ]
 
 @app.route("/") # any website has a route. a part of the url after the url
 # this is going to match the empty route
-def hello_world():
+def home():
     return render_template('home.html', jobs= jobs, name = "Piergiorgio")
 
 @app.route("/jobs")
 def list_jobs():
     return jsonify(jobs)
 
+@app.route("/ml")
+def game():
+    return jsonify(jobs)
 
 if __name__ == "__main__":
     app.run(host = "0.0.0.0", debug = True)
