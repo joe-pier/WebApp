@@ -31,37 +31,22 @@ jobs =  [
         "company": "BendingSpoons",
         "jobdescription": "Python developer",
         "location": "Milan",
-        "start": "01-01-2023"
+        "start": "01-01-2023",
+        "end": "01-02-2024"
         }
         ]
 
-UPLOAD_FOLDER = './upload'
+UPLOAD_FOLDER = './uploads'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 @app.route("/") # any website has a route. a part of the url after the url
 # this is going to match the empty route
 def home():
-    return render_template('home.html', jobs= jobs, name = "Piergiorgio")
+    return render_template('home.html', jobs= jobs, name = "pier")
 
 @app.route("/jobs")
 def list_jobs():
     return jsonify(jobs)
-
-@app.route("/get_image", methods = ["GET","POST"])
-def get_image():
-    if request.method == 'POST':
-        if 'file1' not in request.files:
-            return 'there is no file1 in form!'
-        file1 = request.files['file1']
-        path = os.path.join(app.config['UPLOAD_FOLDER'], file1.filename)
-        file1.save(path)
-    return render_template('uploadimage.html')
-
-@app.route('/send_image')
-def send_image():
-    filename = glob.glob('upload/*.png')[0]
-    print(filename)
-    return send_file(filename, mimetype='image/png')
 
 
 if __name__ == "__main__":
